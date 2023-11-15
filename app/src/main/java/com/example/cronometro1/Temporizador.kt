@@ -64,5 +64,4 @@ class Temporizador : AppCompatActivity() {
         var mp = MediaPlayer.create(this, R.raw.sonido)
         mp.start()
     }
-
 }

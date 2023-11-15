@@ -21,12 +21,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity,Temporizador::class.java))
         }
         contador = 1
-        segundo = 1000 * 60
+        segundo = 100000 * 60
         minuto = 0
         hora = 0
         binding.btniniciar.setOnClickListener() { iniciar() }
         binding.btnreiniciar.setOnClickListener() { reiniciar() }
         binding.btnpausar.setOnClickListener() { detener() }
+
         tiempo = object : CountDownTimer(segundo, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 binding.txttiempo.setTextColor(getColor(R.color.black))
@@ -40,15 +41,13 @@ class MainActivity : AppCompatActivity() {
                 }
                 binding.txttiempo.text = "${hora}:${minuto}:${contador++}"
             }
-
             override fun onFinish() {
-
             }
         }
     }
-
     private fun iniciar() {
         tiempo.start()
+
     }
 
     private fun reiniciar() {
