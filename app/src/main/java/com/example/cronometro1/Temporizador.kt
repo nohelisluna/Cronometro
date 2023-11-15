@@ -20,19 +20,22 @@ class Temporizador : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTemporizadorBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         editTextHours = findViewById(R.id.texthora)
         editTextMinutes = findViewById(R.id.textMinuto)
         editTextSeconds = findViewById(R.id.textSegundo)
         tvTimeRemaining = findViewById(R.id.tvtiempo)
-        binding.btndetener.setOnClickListener() { detener() }
+        binding.btndetener.setOnClickListener { detener() }
     }
 
     private fun detener() {
         tiempo.cancel()
+        binding.btndetener.isEnabled= false
+        binding.button.isEnabled = true
     }
 
     fun startTimer(view: View) {
+        binding.button.isEnabled = false
+        binding.btndetener.isEnabled= true
         val hours = editTextHours.text.toString().toLongOrNull() ?: 0
         val minutes = editTextMinutes.text.toString().toLongOrNull() ?: 0
         val seconds = editTextSeconds.text.toString().toLongOrNull() ?: 0
