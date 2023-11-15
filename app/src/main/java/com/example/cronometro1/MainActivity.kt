@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun iniciar() {
         tiempo.start()
+        binding.btniniciar.isEnabled= false
 
     }
 
@@ -57,9 +58,11 @@ class MainActivity : AppCompatActivity() {
         minuto = 0
         hora = 0
         binding.txttiempo.text = "${hora}:${minuto}:${contador}"
+        binding.btniniciar.isEnabled= true
     }
 
     private fun detener() {
         tiempo.cancel()
+        binding.btniniciar.isEnabled= true
     }
 }
